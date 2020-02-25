@@ -1,0 +1,9 @@
+[submodule "dash-rss"]
+	path = dash-rss
+	url = https://github.com/formation-dwwm/dash-rss
+[submodule "dash-wp/wp-content/plugins/dash-wp-module"]
+	path = dash-wp/wp-content/plugins/dash-wp-module
+	url = https://github.com/formation-dwwm/dash-wp-module/
+[submodule "dash-wp/wp-content/themes/dash-wp-theme"]
+	path = dash-wp/wp-content/themes/dash-wp-theme
+	url = https://github.com/formation-dwwm/dash-wp-theme
