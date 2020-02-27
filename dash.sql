@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 27 fév. 2020 à 10:09
--- Version du serveur :  5.7.26
--- Version de PHP :  7.2.18
+-- Généré le :  jeu. 27 fév. 2020 à 14:54
+-- Version du serveur :  10.1.40-MariaDB
+-- Version de PHP :  7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -112,7 +112,16 @@ CREATE TABLE IF NOT EXISTS `post` (
   PRIMARY KEY (`id`),
   KEY `post_source_FK` (`id_source`),
   KEY `post_theme0_FK` (`id_theme`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `post`
+--
+
+INSERT INTO `post` (`id`, `title`, `content`, `date`, `author`, `state`, `id_source`, `id_theme`, `alert`, `post_url`) VALUES
+(1, 'Disney+ may not be the Netflix killer everyone thought it would be', 'While most everyone anticipated that Disney+ would be popular, the extent of the streaming service\'s success even caught a few Disney executives off guard. Bolstered by a huge catalog of familiar and beloved content, along with new programming like The Mandalorian, Disney+ struck like a lightning bolt when it initially launched in early November. To this point, Disney+, just two weeks after launch, had already amassed an estimated 15 million subscribers. Most recently, former Disney CEO Bob Iger disclosed during an earnings conference call that the Disney+ subscriber total had eclipsed 28.6 million. Those figures are beyond impressive and prompted many to posit that Disney+ could prove to be a serious threat to Netflix\'s ongoing streaming domination. A new report from DecisionData, however, relays that interest in Disney+ may be waning a bit. Specifically, the report notes that Disney+ search engine traffic, media stories, and brand name mentions across social media ...', '2020-02-27', 'bgr', 'published', 1, 1, 0, 'https://bgr.com/2020/02/26/disney-plus-vs-netflix-subscribers-declining/'),
+(3, 'Is new Disney CEO Bob Chapek up to the task?', 'A global pandemic and the challenge of figuring out the future of entertainment greeted Bob Chapek on Wednesday as he took over as Chief Executive Officer of Walt Disney Co . ', '2020-02-27', 'Pas moi', 'published', 1, 1, 0, 'https://www.reuters.com/article/us-media-walt-disney-ceo/is-new-disney-ceo-bob-chapek-up-to-the-task-idUSKCN20L01K?feedType=RSS&feedName=businessNews&utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+reuters%2FbusinessNews+%28Business+News%29'),
+(4, '\r\n\r\nGoogle News Initiative is focused on local news ‘deserts’', 'The Google News Initiative Subscriptions Lab took a long game approach to helping local publishers build digital-first, consumer-revenue based businesses. The post Google News Initiative is focused on local news ‘deserts’ appeared first on Digiday.', '2020-02-27', 'marion', 'published', 1, 1, 0, 'https://digiday.com/media/google-news-initiative-focused-local-news-deserts/');
 
 -- --------------------------------------------------------
 
