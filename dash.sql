@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 26 fév. 2020 à 08:56
+-- Généré le :  jeu. 27 fév. 2020 à 10:09
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `access` (
   `id_theme` int(11) NOT NULL,
   `id_group_dash` int(11) NOT NULL,
   PRIMARY KEY (`id_theme`,`id_group_dash`),
-  KEY `access_group_dash0_FK` (`id_group_dash`)
+  KEY `IDX_6692B5417BE06A7` (`id_group_dash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `content` (
   `id_content` int(11) NOT NULL,
   `id_post` int(11) NOT NULL,
   PRIMARY KEY (`id_content`,`id_post`),
-  KEY `content_post0_FK` (`id_post`)
+  KEY `IDX_FEC530A9D1AA708F` (`id_post`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -62,7 +62,34 @@ CREATE TABLE IF NOT EXISTS `group_dash` (
   `groupName` varchar(255) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `group_dash`
+--
+
+INSERT INTO `group_dash` (`id`, `groupName`, `date`) VALUES
+(1, 'test', '2020-02-26');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `migration_versions`
+--
+
+DROP TABLE IF EXISTS `migration_versions`;
+CREATE TABLE IF NOT EXISTS `migration_versions` (
+  `version` varchar(14) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `executed_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `migration_versions`
+--
+
+INSERT INTO `migration_versions` (`version`, `executed_at`) VALUES
+('20200226145533', '2020-02-26 14:58:50');
 
 -- --------------------------------------------------------
 
@@ -78,9 +105,10 @@ CREATE TABLE IF NOT EXISTS `post` (
   `date` date NOT NULL,
   `author` varchar(255) NOT NULL,
   `state` varchar(255) NOT NULL,
-  `id_source` int(11) NOT NULL,
-  `id_theme` int(11) NOT NULL,
+  `id_source` int(11) DEFAULT NULL,
+  `id_theme` int(11) DEFAULT NULL,
   `alert` tinyint(1) NOT NULL,
+  `post_url` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `post_source_FK` (`id_source`),
   KEY `post_theme0_FK` (`id_theme`)
@@ -98,7 +126,14 @@ CREATE TABLE IF NOT EXISTS `source` (
   `rss_url` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `source`
+--
+
+INSERT INTO `source` (`id`, `rss_url`, `name`) VALUES
+(1, 'https://syndication.lesechos.fr/rss/rss_tech_medias.xml', 'Les Echos');
 
 -- --------------------------------------------------------
 
@@ -124,7 +159,14 @@ CREATE TABLE IF NOT EXISTS `theme` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `theme`
+--
+
+INSERT INTO `theme` (`id`, `name`) VALUES
+(1, 'Mobile');
 
 -- --------------------------------------------------------
 
@@ -137,11 +179,18 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `id_group_dash` int(11) NOT NULL,
+  `id_group_dash` int(11) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_group_dash_FK` (`id_group_dash`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `user`, `password`, `id_group_dash`, `email`) VALUES
+(1, 'Marion', 'marion', 1, 'marion@free.fr');
 
 --
 -- Contraintes pour les tables déchargées
